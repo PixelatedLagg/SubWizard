@@ -12,3 +12,4 @@ C:\Users\William\Desktop\SubWizard\obj\Debug\net8.0\refint\SubWizard.dll
 C:\Users\William\Desktop\SubWizard\obj\Debug\net8.0\SubWizard.pdb
 C:\Users\William\Desktop\SubWizard\obj\Debug\net8.0\SubWizard.genruntimeconfig.cache
 C:\Users\William\Desktop\SubWizard\obj\Debug\net8.0\ref\SubWizard.dll
+C:\Users\William\Desktop\SubWizard\obj\Debug\net8.0\SubWizard.sourcelink.json
