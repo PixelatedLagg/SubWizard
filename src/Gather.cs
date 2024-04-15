@@ -9,6 +9,10 @@ namespace SubWizard.Data
         {
             data = File.ReadAllLines("words_alpha.txt");
         }
+        public static void Init(string phrase)
+        {
+            data = phrase.Split(' ');
+        }
         public static void ProbLetterInWord()
         {
             int[] prob = new int[26];
@@ -118,6 +122,33 @@ namespace SubWizard.Data
             for (int i = 0; i < 26; i++)
             {
                 Console.WriteLine($"AVG_LETTER_WORD {(char)('a' + i)} - {sum[i] / wordCount[i]}");
+            }
+        }
+        public static void TotalLetterInt()
+        {
+            int[] count = new int[26];
+            int total = 0;
+            for (int i = 0; i < 26; i++)
+            {
+                count[i] = 0;
+            }
+            foreach (string s in data)
+            {
+                foreach (char c in s)
+                {
+                    for (int i = 0; i < 26; i++)
+                    {
+                        if (c == 'a' + i)
+                        {
+                            count[i]++;
+                        }
+                    }
+                    total++;
+                }
+            }
+            for (int i = 0; i < 26; i++)
+            {
+                Console.WriteLine($"TOTAL_FREQ {(char)('a' + i)} - {count[i]} - TOTAL: {total}");
             }
         }
     }
