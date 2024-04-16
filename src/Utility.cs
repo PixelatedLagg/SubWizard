@@ -39,5 +39,15 @@ namespace SubWizard
         {
             return Math.Abs((o - t) / t);
         }
+
+        public static string ConvertToString(this int[] a)
+        {
+            char[] chars = new char[a.Length];
+            for (int i = 0; i < a.Length; i++)
+            {
+                chars[i] = (char)a[i];
+            }
+            return chars.ToString() ?? "";
+        }
     }
 }
