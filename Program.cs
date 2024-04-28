@@ -12,8 +12,8 @@ namespace SubWizard
             
             string input = Console.ReadLine() ?? "";
             BigInteger upper = UpperBound(input);
-            Console.WriteLine(upper);
-            //start algo
+            Console.WriteLine($"Upperbound of of estimate: {upper}");
+
             
         }
 
