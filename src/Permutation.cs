@@ -26,5 +26,20 @@ namespace SubWizard
                 }
             }
         }
+
+        public static int[] ConvertToChars(int[] x, int[] chars)
+        {
+            for (int i = 0; i < chars.Length; i++)
+            {
+                for (int j = 0; j < x.Length; j++)
+                {
+                    if (x[j] == i)
+                    {
+                        x[j] = chars[i];
+                    }
+                }
+            }
+            return x;
+        }
     }
 }

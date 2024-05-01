@@ -31,7 +31,7 @@ namespace SubWizard.Data
                 Console.WriteLine($"{(char)('a' + i)} - {(double)prob[i] / data.Length}");
             }
         }
-        public static void TotalLetterFreq()
+        public static double[] TotalLetterFreq()
         {
             int[] count = new int[26];
             int total = 0;
@@ -53,10 +53,12 @@ namespace SubWizard.Data
                     total++;
                 }
             }
+            double[] result = new double[26];
             for (int i = 0; i < 26; i++)
             {
-                Console.WriteLine($"TOTAL_FREQ {(char)('a' + i)} - {(double)count[i] / total}");
+                result[i] = (double)count[i] / total;
             }
+            return result;
         }
         /*public static void AvgLetterWordFreq()
         {
