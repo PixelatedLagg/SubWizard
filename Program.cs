@@ -5,39 +5,71 @@ namespace SubWizard
 {
     public class Program
     {
-        public static void Main()
+        static double[] expected = new double[26];
+        /*public static void Main()
         {
-            Gather.Init();
-            double[] trueValues = Gather.TotalLetterFreq();
+            /*Gather.Init();
+            expected = Gather.TotalLetterFreq();
             
             
             string input = Console.ReadLine() ?? "";
             BigInteger upper = UpperBound(input);
-            Console.WriteLine($"Upperbound of of estimate: {upper}");
-
-
-        }
-
-        public static double Confidence()
-        {
-            double sum = 0;
-            //1 - avg of percent error of all stuff (BY TOTAL PROPORTION)
+            Console.WriteLine($"Upperbound of estimate: {upper}");
+            string[] words = input.Split(' ');
             
+            IEnumerable<int[]> permutations = Permutation.Generate(7);
+            Console.WriteLine(permutations.Count());
+            return;
 
-            return sum / 26;
-        }
-
-        public static int[] UniqueChars(string s)
-        {
-            List<int> chars = new List<int>();
-            foreach (char c in s)
+            List<(double, int[])> results = [];
+            foreach (int[] transposition in permutations)
             {
-                if (!chars.Contains(c - 'a'))
+                results.Add((ChiSquare(transposition, words), transposition));
+            }
+            
+            IOrderedEnumerable<(double, int[])> orderedResults = results.OrderByDescending(x => x.Item1);
+            for (int i = 0; i < results.Count; i++)
+            {
+                Console.WriteLine($"{i}: ChiSquare-{orderedResults.ElementAt(i).Item1}, \"{ReplaceCombineTransposition(words, orderedResults.ElementAt(i).Item2)}\"");
+            }
+        }*/
+        static void Main()
+    {
+        Console.WriteLine(Permutation.Generate(3).Count());
+    }
+
+
+
+
+        public static int UniqueChars(string[] s)
+        {
+            List<int> chars = [];
+            foreach (string sub in s)
+            {
+                foreach (char c in sub)
                 {
-                    chars.Add(c - 'a');
+                    if (!chars.Contains(c - 'a'))
+                    {
+                        chars.Add(c - 'a');
+                    }
                 }
             }
-            return chars.ToArray();
+            return chars.Count;
+        }
+
+        public static string ReplaceCombineTransposition(string[] words, int[] transposition)
+        {
+            string s = "";
+            foreach (string word in words)
+            {
+                s += word + ' ';
+            }
+            s = s.TrimEnd();
+            for (int i = 0; i < 26; i++)
+            {
+                s = s.Replace((char)('a' + i), (char)('a' + transposition[i]));
+            }
+            return s;
         }
 
         public static BigInteger UpperBound(string s)
@@ -64,6 +96,16 @@ namespace SubWizard
                 }
                 n--;
                 result *= i;
+            }
+            return result;
+        }
+
+        public static double ChiSquare(int[] transposition, string[] words)
+        {
+            double result = 0;
+            for (int i = 0; i < 26; i++)
+            {
+                result += Math.Pow(Gather.FreqLetterWords(words, (char)('a' + transposition[i])) - expected[i], 2) / expected[i];
             }
             return result;
         }

@@ -153,5 +153,34 @@ namespace SubWizard.Data
                 Console.WriteLine($"TOTAL_FREQ {(char)('a' + i)} - {count[i]} - TOTAL: {total}");
             }
         }
+        public static double FreqLetterWord(string word, char letter)
+        {
+            int count = 0;
+            foreach (char c in word)
+            {
+                if (c == letter)
+                {
+                    count++;
+                }
+            }
+            return count / word.Length;
+        }
+        public static double FreqLetterWords(string[] words, char letter)
+        {
+            int count = 0;
+            int total = 0;
+            foreach (string s in words)
+            {
+                total += s.Length;
+                foreach (char c in s)
+                {
+                    if (c == letter)
+                    {
+                        count++;
+                    }
+                }
+            }
+            return count / total;
+        }
     }
 }

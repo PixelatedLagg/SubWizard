@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\William\\Desktop\\SubWizard\\SubWizard.csproj": {}
+    "C:\\Users\\William\\Desktop\\TranspositionWizard\\SubWizard.csproj": {}
   },
   "projects": {
-    "C:\\Users\\William\\Desktop\\SubWizard\\SubWizard.csproj": {
+    "C:\\Users\\William\\Desktop\\TranspositionWizard\\SubWizard.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\William\\Desktop\\SubWizard\\SubWizard.csproj",
+        "projectUniqueName": "C:\\Users\\William\\Desktop\\TranspositionWizard\\SubWizard.csproj",
         "projectName": "SubWizard",
-        "projectPath": "C:\\Users\\William\\Desktop\\SubWizard\\SubWizard.csproj",
+        "projectPath": "C:\\Users\\William\\Desktop\\TranspositionWizard\\SubWizard.csproj",
         "packagesPath": "C:\\Users\\William\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\William\\Desktop\\SubWizard\\obj\\",
+        "outputPath": "C:\\Users\\William\\Desktop\\TranspositionWizard\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\William\\AppData\\Roaming\\NuGet\\NuGet.Config"
