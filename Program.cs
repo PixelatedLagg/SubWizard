@@ -6,9 +6,10 @@ namespace SubWizard
     public class Program
     {
         static double[] expected = new double[26];
-        /*public static void Main()
+        static int[] uniqueChars;
+        public static void Main()
         {
-            /*Gather.Init();
+            Gather.Init();
             expected = Gather.TotalLetterFreq();
             
             
@@ -17,31 +18,24 @@ namespace SubWizard
             Console.WriteLine($"Upperbound of estimate: {upper}");
             string[] words = input.Split(' ');
             
-            IEnumerable<int[]> permutations = Permutation.Generate(7);
-            Console.WriteLine(permutations.Count());
-            return;
-
-            List<(double, int[])> results = [];
-            foreach (int[] transposition in permutations)
+            uniqueChars = UniqueChars(words);
+            List<List<int>> combos = Combinations.GenerateCombinations(uniqueChars.Length);
+            Console.WriteLine(combos.Count);
+            
+            List<(double, List<int>)> results = [];
+            foreach (List<int> transposition in combos)
             {
                 results.Add((ChiSquare(transposition, words), transposition));
             }
             
-            IOrderedEnumerable<(double, int[])> orderedResults = results.OrderByDescending(x => x.Item1);
+            IOrderedEnumerable<(double, List<int>)> orderedResults = results.OrderByDescending(x => x.Item1);
             for (int i = 0; i < results.Count; i++)
             {
                 Console.WriteLine($"{i}: ChiSquare-{orderedResults.ElementAt(i).Item1}, \"{ReplaceCombineTransposition(words, orderedResults.ElementAt(i).Item2)}\"");
             }
-        }*/
-        static void Main()
-    {
-        Console.WriteLine(Permutation.Generate(3).Count());
-    }
+        }
 
-
-
-
-        public static int UniqueChars(string[] s)
+        public static int[] UniqueChars(string[] s)
         {
             List<int> chars = [];
             foreach (string sub in s)
@@ -54,10 +48,10 @@ namespace SubWizard
                     }
                 }
             }
-            return chars.Count;
+            return [.. chars];
         }
 
-        public static string ReplaceCombineTransposition(string[] words, int[] transposition)
+        public static string ReplaceCombineTransposition(string[] words, List<int> transposition)
         {
             string s = "";
             foreach (string word in words)
@@ -65,9 +59,9 @@ namespace SubWizard
                 s += word + ' ';
             }
             s = s.TrimEnd();
-            for (int i = 0; i < 26; i++)
+            for (int i = 0; i < uniqueChars.Length; i++)
             {
-                s = s.Replace((char)('a' + i), (char)('a' + transposition[i]));
+                s = s.Replace((char)('a' + uniqueChars[i]), (char)('a' + transposition[i]));
             }
             return s;
         }
@@ -100,7 +94,7 @@ namespace SubWizard
             return result;
         }
 
-        public static double ChiSquare(int[] transposition, string[] words)
+        public static double ChiSquare(List<int> transposition, string[] words)
         {
             double result = 0;
             for (int i = 0; i < 26; i++)
