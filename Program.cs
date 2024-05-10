@@ -31,6 +31,10 @@ namespace SubWizard
             IOrderedEnumerable<(double, List<int>)> orderedResults = results.OrderByDescending(x => x.Item1);
             for (int i = 0; i < results.Count; i++)
             {
+                if (i == 50)
+                {
+                    break;
+                }
                 Console.WriteLine($"{i}: ChiSquare-{orderedResults.ElementAt(i).Item1}, \"{ReplaceCombineTransposition(words, orderedResults.ElementAt(i).Item2)}\"");
             }
         }
@@ -97,7 +101,8 @@ namespace SubWizard
         public static double ChiSquare(List<int> transposition, string[] words)
         {
             double result = 0;
-            for (int i = 0; i < 26; i++)
+            int[] unique = UniqueChars(words);
+            for (int i = 0; i < unique.Length; i++)
             {
                 result += Math.Pow(Gather.FreqLetterWords(words, (char)('a' + transposition[i])) - expected[i], 2) / expected[i];
             }
