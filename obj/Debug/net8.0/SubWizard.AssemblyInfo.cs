@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SubWizard")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+984d4a35e2eb3825c0fb5790b68afb546764c6f2")]
 [assembly: System.Reflection.AssemblyProductAttribute("SubWizard")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SubWizard")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

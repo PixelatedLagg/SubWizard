@@ -10,12 +10,11 @@ namespace SubWizard
             return result;
         }
 
-        // Helper method to recursively generate unique combinations
         private static void GenerateCombinationsHelper(int length, List<int> currentCombination, List<List<int>> result)
         {
             if (currentCombination.Count == length)
             {
-                result.Add(new List<int>(currentCombination)); // Add current combination to result
+                result.Add(new List<int>(currentCombination));
                 return;
             }
             for (int i = 0; i <= 25; i++)

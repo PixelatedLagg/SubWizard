@@ -1,41 +1,71 @@
-﻿using SubWizard.Data;
+﻿using ExtendedNumerics;
+using SubWizard.Data;
 using System.Numerics;
 
 namespace SubWizard
 {
     public class Program
     {
-        static double[] expected = new double[26];
+        static BigDecimal[] expected =
+        [
+            0.0846402860096712,
+            0.018296526718835086,
+            0.0437750575370124,
+            0.03238955368790574,
+            0.10772176322650225,
+            0.011227836840112776,
+            0.023643469967582403,
+            0.026430828106619526,
+            0.08956630698939853,
+            0.001561218150763426,
+            0.007672746241673479,
+            0.05577434674781033,
+            0.030104955866114096,
+            0.0719479487121524,
+            0.07199344608861344,
+            0.03252432893515823,
+            0.0016834029290581443,
+            0.07043308637891531,
+            0.0716180211960545,
+            0.06606991659100463,
+            0.03762718877433788,
+            0.009464312744959735,
+            0.006411696316744151,
+            0.0030025406994062735,
+            0.02019654294337122,
+            0.004222671600222851
+        ];
         static int[] uniqueChars;
+
         public static void Main()
         {
             Gather.Init();
-            expected = Gather.TotalLetterFreq();
-            
-            
             string input = Console.ReadLine() ?? "";
+            BigDecimal.AlwaysTruncate = true;
+            BigDecimal.Precision = 20;
             BigInteger upper = UpperBound(input);
             Console.WriteLine($"Upperbound of estimate: {upper}");
             string[] words = input.Split(' ');
             
             uniqueChars = UniqueChars(words);
             List<List<int>> combos = Combinations.GenerateCombinations(uniqueChars.Length);
-            Console.WriteLine(combos.Count);
-            
-            List<(double, List<int>)> results = [];
+            int x = 0;
+            List<(BigDecimal, List<int>)> results = [];
             foreach (List<int> transposition in combos)
             {
+                Console.WriteLine(x);
                 results.Add((ChiSquare(transposition, words), transposition));
+                x++;
             }
             
-            IOrderedEnumerable<(double, List<int>)> orderedResults = results.OrderByDescending(x => x.Item1);
+            IOrderedEnumerable<(BigDecimal, List<int>)> orderedResults = results.OrderByDescending(x => x.Item1);
             for (int i = 0; i < results.Count; i++)
             {
-                if (i == 50)
+                if (i == 2000)
                 {
                     break;
                 }
-                Console.WriteLine($"{i}: ChiSquare-{orderedResults.ElementAt(i).Item1}, \"{ReplaceCombineTransposition(words, orderedResults.ElementAt(i).Item2)}\"");
+                Console.WriteLine($"{i}: RChiSq-{orderedResults.ElementAt(i).Item1}, \"{ReplaceCombineTransposition(words, orderedResults.ElementAt(i).Item2)}\"");
             }
         }
 
@@ -98,13 +128,12 @@ namespace SubWizard
             return result;
         }
 
-        public static double ChiSquare(List<int> transposition, string[] words)
+        public static BigDecimal ChiSquare(List<int> transposition, string[] words)
         {
-            double result = 0;
-            int[] unique = UniqueChars(words);
-            for (int i = 0; i < unique.Length; i++)
+            BigDecimal result = 0;
+            for (int i = 0; i < uniqueChars.Length; i++)
             {
-                result += Math.Pow(Gather.FreqLetterWords(words, (char)('a' + transposition[i])) - expected[i], 2) / expected[i];
+                result += BigDecimal.Pow(Gather.FreqLetterWords(words, (char)('a' + transposition[i])) - expected[transposition[i]], 2) / expected[transposition[i]];
             }
             return result;
         }

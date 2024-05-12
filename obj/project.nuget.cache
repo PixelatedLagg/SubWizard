@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ybHz+6eK3ginrH0pyDlloJzv1KiUwN6o3BqSzDBVPuFSojAhGcboPY0V4lPchrz9k3IcvSyykTEuBckPHAY/CQ==",
+  "dgSpecHash": "7+jCzWg9NvoOpX1xj+jMAXqZJj97J5dqiua34baVAfZ70bv5/rbS8+2amhxD0edeNUYBLju4J3SjG/MX25572A==",
   "success": true,
   "projectFilePath": "C:\\Users\\William\\Desktop\\TranspositionWizard\\SubWizard.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\William\\.nuget\\packages\\extendednumerics.bigdecimal\\2025.1001.2.129\\extendednumerics.bigdecimal.2025.1001.2.129.nupkg.sha512"
+  ],
   "logs": []
 }

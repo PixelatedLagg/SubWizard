@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="ExtendedNumerics.BigDecimal" Version="2025.1001.2.129" />
+  </ItemGroup>
+
 </Project>

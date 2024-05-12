@@ -28,3 +28,6 @@ C:\Users\William\Desktop\TranspositionWizard\obj\Debug\net8.0\refint\SubWizard.d
 C:\Users\William\Desktop\TranspositionWizard\obj\Debug\net8.0\SubWizard.pdb
 C:\Users\William\Desktop\TranspositionWizard\obj\Debug\net8.0\SubWizard.genruntimeconfig.cache
 C:\Users\William\Desktop\TranspositionWizard\obj\Debug\net8.0\ref\SubWizard.dll
+C:\Users\William\Desktop\TranspositionWizard\bin\Debug\net8.0\ExtendedNumerics.BigDecimal.dll
+C:\Users\William\Desktop\TranspositionWizard\obj\Debug\net8.0\SubWizard.csproj.AssemblyReference.cache
+C:\Users\William\Desktop\TranspositionWizard\obj\Debug\net8.0\SubWizard.csproj.CopyComplete

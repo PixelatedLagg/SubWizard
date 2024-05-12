@@ -1,4 +1,5 @@
 using System.Text.Json;
+using ExtendedNumerics;
 
 namespace SubWizard.Data
 {
@@ -165,7 +166,7 @@ namespace SubWizard.Data
             }
             return count / word.Length;
         }
-        public static double FreqLetterWords(string[] words, char letter)
+        public static BigDecimal FreqLetterWords(string[] words, char letter)
         {
             int count = 0;
             int total = 0;
