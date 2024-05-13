@@ -1,4 +1,5 @@
 ﻿using ExtendedNumerics;
+using Microsoft.VisualBasic;
 using SubWizard.Data;
 using System.Numerics;
 
@@ -36,6 +37,7 @@ namespace SubWizard
             0.004222671600222851
         ];
         static int[] uniqueChars;
+        static double sampleSize = 0;
 
         public static void Main()
         {
@@ -46,7 +48,13 @@ namespace SubWizard
             BigInteger upper = UpperBound(input);
             Console.WriteLine($"Upperbound of estimate: {upper}");
             string[] words = input.Split(' ');
-            
+
+            foreach (string s in words)
+            {
+                sampleSize += s.Length;
+            }
+            sampleSize = Math.Sqrt(sampleSize);
+
             uniqueChars = UniqueChars(words);
             List<List<int>> combos = Combinations.GenerateCombinations(uniqueChars.Length);
             int x = 0;
@@ -136,6 +144,11 @@ namespace SubWizard
                 result += BigDecimal.Pow(Gather.FreqLetterWords(words, (char)('a' + transposition[i])) - expected[transposition[i]], 2) / expected[transposition[i]];
             }
             return result;
+        }
+
+        public static bool InExpectedRange(double observed, double expected)
+        {
+            return !(observed < -2 * expected / sampleSize || 2 * expected / sampleSize < observed);
         }
     }
 }
